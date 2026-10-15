@@ -69,13 +69,15 @@ main {
 
 .daftar-item {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   margin-top: 20px;
 }
 
 .kartu-item {
   width: 280px;
-  flex-shrink: 0;
+  max-width: 100%;
+  flex-shrink: 1;
   background: white;
   border-radius: 10px;
   padding: 16px;
