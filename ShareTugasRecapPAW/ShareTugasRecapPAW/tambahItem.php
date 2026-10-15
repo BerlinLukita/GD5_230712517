@@ -62,12 +62,32 @@ if (!isset($_SESSION["host"])) {
   </main>
 
   <script>
-    function hitungPerOrang() {
-      const harga = document.getElementById("hargaItem").value;
-      const jumlahOrang = document.getElementById("jumlahOrangItem").value;
-      const perOrang = harga / jumlahOrang;
-      document.getElementById("hasilSplit").innerText = "Per orang: Rp" + perOrang;
+  function hitungSplit() {
+    const harga = Number(document.getElementById("hargaItem").value);
+    const jumlahOrang = Number(document.getElementById("jumlahOrangItem").value);
+    const hasil = document.getElementById("hasilHitung");
+
+    if (
+      document.getElementById("hargaItem").value === "" ||
+      document.getElementById("jumlahOrangItem").value === "" ||
+      !Number.isFinite(harga) ||
+      !Number.isFinite(jumlahOrang) ||
+      harga <= 0 ||
+      jumlahOrang < 1 ||
+      !Number.isInteger(jumlahOrang)
+    ) {
+      hasil.innerText = "Masukkan harga dan jumlah orang yang valid.";
+      return;
     }
-  </script>
+
+    const perOrang = harga / jumlahOrang;
+
+    hasil.innerText =
+      "Per orang: Rp" +
+      perOrang.toLocaleString("id-ID", {
+        maximumFractionDigits: 2
+      });
+  }
+</script>
 </body>
 </html>
